@@ -5,7 +5,7 @@ class CoffeeMaker:
             "water": 300,
             "milk": 200,
             "coffee": 100,
-        }
+        } 
 
     def report(self):
         """Prints a report of all resources."""
