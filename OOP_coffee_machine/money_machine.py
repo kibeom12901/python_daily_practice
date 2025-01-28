@@ -1,4 +1,4 @@
-class MoneyMachine:
+class MoneyMachine: 
 
     CURRENCY = "$"
 
