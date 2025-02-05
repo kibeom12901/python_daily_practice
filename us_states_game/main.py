@@ -2,7 +2,7 @@ from turtle import Turtle, Screen
 import pandas
 
 screen = Screen()
-turtle = Turtle()
+turtle = Turtle() 
 
 screen.title("U.S States game")
 image = "blank_states_img.gif"
