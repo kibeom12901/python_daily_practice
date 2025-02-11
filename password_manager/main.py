@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import messagebox
 import random
 import string
+import json
+# ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 def generate_password():
     characters = string.ascii_letters + string.digits + string.punctuation
@@ -9,10 +11,18 @@ def generate_password():
     password_entry.delete(0, END)
     password_entry.insert(0, password)
 
+# ---------------------------- SAVE PASSWORD ------------------------------- #
+
 def save_password():
     website = website_entry.get()
     email = email_entry.get()
     password = password_entry.get()
+    new_data = {
+        website:{
+            "email": email,
+            "password": password
+        }
+    }
     
     if not website or not email or not password:
         messagebox.showwarning(title="Warning", message="Please fill in all fields.")
@@ -21,11 +31,42 @@ def save_password():
     is_ok = messagebox.askokcancel(title="Confirm", message=f"Save the following details?\n\nWebsite: {website}\nEmail: {email}\nPassword: {password}")
     
     if is_ok:
-        with open("data.txt", "a") as file:
-            file.write(f"{website} | {email} | {password}\n")
-        
-        website_entry.delete(0, END)
-        password_entry.delete(0, END)
+        try:
+            with open("data.json", "r") as file:
+                # file.write(f"{website} | {email} | {password}\n")         
+                #read data 
+                data = json.load(file)
+                #update data
+        except(FileNotFoundError):
+            with open("data.json", "w") as file:
+                json.dump(new_data, file, indent=4)
+        else:
+            data.update(new_data)
+            
+            with open("data.json", "w") as file:
+                #save updated data
+                json.dump(data, file, indent=4)
+        finally:
+            website_entry.delete(0, END)
+            password_entry.delete(0, END)
+# ---------------------------- SEARCH FUNCTION ------------------------------- #
+def search_password():
+    
+    website_search = website_entry.get()
+    try:
+        with open("data.json", "r") as file:
+            data = json.load(file)
+    except FileNotFoundError:
+        messagebox.showinfo(title="Error", message="No Data File Found")
+    else:
+        if website_search in data:
+            email = data[website_search]["email"]
+            password = data[website_search]["password"]
+            messagebox.showinfo(title="website", message=f"Email: {email}\n Password: {password}")
+        else:
+            messagebox.showinfo(title="Error", message="No Website Found")
+
+# ---------------------------- UI SETUP ------------------------------- #
 
 window = Tk()
 window.title("Password Manager")
@@ -59,6 +100,9 @@ password_entry = Entry(width=21)
 password_entry.grid(row=3, column=1, sticky="ew")
 
 # Button
+search_button = Button(text="Search", command=search_password, width=13)  # Added search button
+search_button.grid(row=1, column=2, sticky="ew")
+
 generate_password_button = Button(text="Generate Password", highlightthickness=0, command=generate_password)
 generate_password_button.grid(row=3, column=2, sticky="ew")
 
