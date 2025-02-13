@@ -7,7 +7,7 @@ class MenuItem:
             "water": water,
             "milk": milk,
             "coffee": coffee
-        }
+        } 
 
 
 class Menu:
