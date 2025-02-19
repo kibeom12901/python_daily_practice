@@ -3,7 +3,7 @@ from datetime import datetime
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv() 
 
 IATA_ENDPOINT = "https://test.api.amadeus.com/v1/reference-data/locations" 
 FLIGHT_ENDPOINT = "https://test.api.amadeus.com/v2/shopping/flight-offers"
