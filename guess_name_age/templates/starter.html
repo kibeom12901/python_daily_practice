@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to Name Guesser</title>
+  <!-- Using Bootstrap from a CDN for easy styling -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background: #f8f9fa;
+      padding-top: 50px;
+    }
+    .container {
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container text-center">
+    <h1 class="mb-4">Welcome to Name Guesser!</h1>
+    <p class="mb-4">Enter your name below and get a guess of your age and gender.</p>
+    <form action="{{ url_for('guess') }}" method="get">
+      <div class="form-group">
+        <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Guess my info</button>
+    </form>
+  </div>
+</body>
+</html>
