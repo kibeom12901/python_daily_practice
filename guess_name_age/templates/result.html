@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guess Result for {{ user }}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background: #e9ecef;
+      padding-top: 50px;
+    }
+    .result-card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container text-center">
+    <div class="result-card">
+      <h1>Hello, {{ user }}!</h1>
+      <p class="lead">We think you might be <strong>{{ user_gender }}</strong> and around <strong>{{ user_age }}</strong> years old.</p>
+      <a href="{{ url_for('starter') }}" class="btn btn-secondary mt-3">Try another name</a>
+    </div>
+  </div>
+  <footer class="text-center mt-4">
+    <p>COPYRIGHT {{ year }}</p>
+  </footer>
+</body>
+</html>
