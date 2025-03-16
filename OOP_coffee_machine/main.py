@@ -3,7 +3,7 @@ from coffee_maker import CoffeeMaker
 from money_machine import MoneyMachine
 
 menu = Menu()
-money_machine = MoneyMachine() 
+money_machine = MoneyMachine()  
 coffee_machine = CoffeeMaker() 
 
 off_button = False
