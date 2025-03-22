@@ -1,5 +1,5 @@
 import pandas as pd
-import requests
+import requests 
 from bs4 import BeautifulSoup
 
 # Set float display format (optional, but place it early)
