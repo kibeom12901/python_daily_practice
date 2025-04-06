@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from datetime import datetime
 import requests
 
-app = Flask(__name__)
+app = Flask(__name__) 
 
 AGE_URL = "https://api.agify.io?name="
 GENDER_URL = "https://api.genderize.io?name="
