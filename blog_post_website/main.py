@@ -4,7 +4,7 @@ import requests
 
 BLOG_URL = "https://api.npoint.io/c790b4d5cab58020d391"
 
-posts = requests.get(BLOG_URL).json()
+posts = requests.get(BLOG_URL).json() 
 post_objects = []
 for post in posts:
     post_obj = Post(post["id"], post["title"], post["subtitle"], post["body"])
