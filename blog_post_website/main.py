@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from post import Post
-import requests
+import requests 
 
 BLOG_URL = "https://api.npoint.io/c790b4d5cab58020d391"
 
